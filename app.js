@@ -12,7 +12,7 @@ expressConfig(app);
 const PORT = process.env.PORT | 8080;
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, config.host, () => {
   // connect to database
 //   connectDB();
 
