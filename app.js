@@ -9,7 +9,7 @@ const app = express();
 
 expressConfig(app);
 
-// const PORT = process.env.PORT | config.PORT;
+const PORT = process.env.PORT | config.PORT;
 
 // Start server
 app.listen(8080, () => {
