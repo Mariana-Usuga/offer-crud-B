@@ -25,10 +25,10 @@
     "express-mysql-session": "^2.1.8",
     "express-session": "^1.17.3",
     "mysql": "^2.18.1",
-    "promise-mysql": "^5.2.0",
-    "dotenv": "^16.0.1",
+    "promise-mysql": "^5.2.0"
   },
   "devDependencies": {
+    "dotenv": "^16.0.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.16"
   }
