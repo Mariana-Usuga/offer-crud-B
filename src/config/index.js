@@ -1,5 +1,5 @@
 require('dotenv').config();
-console.log('host', process.env.HOST)
+
 
 const config = {
   port: process.env.PORT,
