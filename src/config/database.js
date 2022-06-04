@@ -8,6 +8,7 @@ const connection = mysql.createConnection({
     database: config.database,
     user: config.user,
     password: config.password,
+    multipleStatements: true
 })
 
 const getConnection = () => {
