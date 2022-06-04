@@ -1,6 +1,6 @@
-const offer = require('./api/offer');
-const prices = require('./api/prices');
-const characteristic = require('./api/characteristic')
+const offer = require('./src/api/offer');
+const prices = require('./src/api/prices');
+const characteristic = require('./src/api/characteristic')
 
 function routes(app) {
    app.use('/api/offer', offer);
