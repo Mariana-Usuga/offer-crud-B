@@ -39,22 +39,22 @@ const createCharacteristicHandler = async (req, res) => {
   }
 }
 
-const updateCharacteristicHandler = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { name } = req.body;
-    if (!name) {
-      return res.status(422).json({ response: 'Missing values in the body' });
-    }
+// const updateCharacteristicHandler = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const { name } = req.body;
+//     if (!name) {
+//       return res.status(422).json({ response: 'Missing values in the body' });
+//     }
 
-    const offer = { name }
-    const connection = await getConnection();
-    const updateOffer = await connection.query('UPDATE characteristics SET ? WHERE id = ?', [offer, id])
-    res.json(updateOffer)
-  } catch (error) {
-    return res.status(500).json({ error: error.message });
-  }
-}
+//     const offer = { name }
+//     const connection = await getConnection();
+//     const updateOffer = await connection.query('UPDATE characteristics SET ? WHERE id = ?', [offer, id])
+//     res.json(updateOffer)
+//   } catch (error) {
+//     return res.status(500).json({ error: error.message });
+//   }
+// }
 
 const deleteCharacteristicHandler = async (req, res) => {
   try {
@@ -72,6 +72,6 @@ module.exports = {
   createCharacteristicHandler,
   getCharacteristicHandler,
   deleteCharacteristicHandler,
-  updateCharacteristicHandler
+  // updateCharacteristicHandler
 };
   

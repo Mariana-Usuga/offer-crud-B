@@ -3,7 +3,8 @@ const { getAllPricesHandler,
   getPriceHandler, 
   createPriceHandler, 
   deletePriceHandler, 
-  updatePriceHandler } = require('./prices.controller')
+  // updatePriceHandler 
+} = require('./prices.controller')
 const router = Router();
 
 router.get('/', getAllPricesHandler);
