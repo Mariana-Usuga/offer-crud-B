@@ -1,9 +1,16 @@
-const { Router } = require('express');
+const offer = require('./api/offer');
 
-const router = Router();
+function routes(app) {
+   app.use('/api/offer', offer);
+}
 
-router.get('/', (req, res) => {
-  res.send('nosee')
-})
+module.exports = routes;
+// const { Router } = require('express');
 
-module.exports = router
+// const router = Router();
+
+// router.get('/', (req, res) => {
+//   res.send('nosee')
+// })
+
+// module.exports = router
