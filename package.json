@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Mariana-Usuga/offer-crud_B#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-handlebars": "^6.0.6",
     "express-mysql-session": "^2.1.8",
@@ -28,7 +29,6 @@
     "promise-mysql": "^5.2.0"
   },
   "devDependencies": {
-    "dotenv": "^16.0.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.16"
   }
