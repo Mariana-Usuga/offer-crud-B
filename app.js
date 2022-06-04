@@ -9,10 +9,10 @@ const app = express();
 
 expressConfig(app);
 
-const PORT = process.env.PORT | 8080;
+const PORT = process.env.PORT || 8080;
 console.log('process HOST', process.env.HOST)
 // Start server
-app.listen(PORT, process.env.HOST, () => {
+app.listen(PORT, () => {
   // connect to database
 //   connectDB();
 
