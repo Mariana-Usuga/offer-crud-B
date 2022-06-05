@@ -3,7 +3,7 @@ const { getConnection } = require('../../config/database')
 const getAllPricesHandler = async (req, res) => {
   try {
     const connection = await getConnection();
-    const prices = await connection.query('SELECT id, name, offer_id FROM prices')
+    const prices = await connection.query('SELECT id, name, description, price_value, offer_id FROM prices')
     res.json(prices)
   } catch (error) {
     return res.status(500).json({ error: error.message });
@@ -14,8 +14,8 @@ const getPriceHandler = async (req, res) => {
   try {
     const { id } = req.params;
     const connection = await getConnection();
-    const price = await connection.query('SELECT id, name, description, price_value, offer_id FROM prices WHERE id = ?', 
-    id)
+    const price = await connection.query(`
+    SELECT id, name, description, price_value, offer_id FROM prices WHERE id = ?`, id)
     console.log('pro', price)
     res.json(price)
   } catch (error) {
@@ -58,6 +58,25 @@ const createPriceHandler = async (req, res) => {
   }
 }
 
+const updatePriceHandler = async (req, res) => {
+  console.log('entra en handler')
+  try {
+    const { id } = req.params;
+    const { name } = req.body;
+    if (!name) {
+      return res.status(422).json({ response: 'Missing values in the body' });
+    }
+
+    const price = { name }
+    console.log('name', req.body)
+    const connection = await getConnection();
+    const updatePrice = await connection.query('UPDATE prices SET ? WHERE id = ?', [price, id])
+    res.json(updatePrice)
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+}
+
 const deletePriceHandler = async (req, res) => {
   try {
     const { id } = req.params;
@@ -74,6 +93,7 @@ module.exports = {
   createPriceHandler,
   getPriceHandler,
   deletePriceHandler,
-  getPriceByOfferIdHandler
+  getPriceByOfferIdHandler,
+  updatePriceHandler
 };
   
