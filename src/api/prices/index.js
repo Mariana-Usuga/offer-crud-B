@@ -3,7 +3,7 @@ const { getAllPricesHandler,
   getPriceHandler, 
   createPriceHandler, 
   deletePriceHandler, 
-  getPriceByOfferIdHandler
+  // getPriceByOfferIdHandler
   // updatePriceHandler 
 } = require('./prices.controller')
 const router = Router();
@@ -14,6 +14,6 @@ router.post('/', createPriceHandler);
 // router.put('/:id', updatePriceHandler);
 router.delete('/:id', deletePriceHandler);
 // router.get('report/:id', getPriceByOfferIdHandler);
-router.get('/report/:id', getPriceByOfferIdHandler);
+// router.get('/report/:id', getPriceByOfferIdHandler);
 
 module.exports = router;

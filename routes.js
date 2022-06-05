@@ -5,9 +5,6 @@ const characteristic = require('./src/api/characteristic')
 
 function routes(app) {
    app.use('/api/offer', offer);
-   app.use('/prueba', (req, res) => {
-      res.send('Hello World!')
-    })
    app.use('/api/price', prices);
    app.use('/api/characteristic', characteristic);
 }
