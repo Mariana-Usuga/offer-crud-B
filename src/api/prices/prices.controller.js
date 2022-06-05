@@ -32,7 +32,6 @@ const getPriceByOfferIdHandler = async (req, res) => {
     if(price.length === 0){
       res.json({ response: 'ho hay prices' })
     }
-    console.log('pro', price)
     res.json(price)
   } catch (error) {
     return res.status(500).json({ error: error.message });
