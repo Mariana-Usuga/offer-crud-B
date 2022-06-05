@@ -26,11 +26,9 @@ const getPriceHandler = async (req, res) => {
 const getPriceByOfferIdHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log('id', id)
     const connection = await getConnection();
     const price = await connection.query(`
     SELECT id, name, description, price_value, offer_id FROM prices WHERE offer_id = ?`, id);
-    console.log('passsaaaa')
     if(price.length === 0){
       res.json({ response: 'ho hay prices' })
     }
@@ -59,7 +57,6 @@ const createPriceHandler = async (req, res) => {
 }
 
 const updatePriceHandler = async (req, res) => {
-  console.log('entra en handler')
   try {
     const { id } = req.params;
     const { name } = req.body;
@@ -68,7 +65,6 @@ const updatePriceHandler = async (req, res) => {
     }
 
     const price = { name }
-    console.log('name', req.body)
     const connection = await getConnection();
     const updatePrice = await connection.query('UPDATE prices SET ? WHERE id = ?', [price, id])
     res.json(updatePrice)

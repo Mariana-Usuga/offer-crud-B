@@ -11,7 +11,6 @@ const getAllCharacteristicsHandler = async (req, res) => {
 }
 
 const getCharacteristicHandler = async (req, res) => {
-  console.log('entra en handler')
   try {
     const { id } = req.params;
     const connection = await getConnection();

@@ -12,8 +12,6 @@ expressConfig(app);
 const PORT = process.env.PORT || 8080;
 // Start server
 app.listen(PORT, () => {
-  // connect to database
-//   connectDB();
 
   // Routes
   routes(app);

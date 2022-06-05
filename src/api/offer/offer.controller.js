@@ -11,7 +11,6 @@ const getAllOffersHandler = async (req, res) => {
 }
 
 const getOfferHandler = async (req, res) => {
-  console.log('entra en handler')
   try {
     const { id } = req.params;
     const connection = await getConnection();
@@ -40,7 +39,6 @@ const createOfferHandler = async (req, res) => {
 }
 
 const deleteOfferHandler = async (req, res) => {
-  console.log('entra en handler')
   try {
     const { id } = req.params;
     const connection = await getConnection();
