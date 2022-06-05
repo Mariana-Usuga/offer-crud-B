@@ -3,7 +3,7 @@ const { getConnection } = require('../../config/database')
 const getAllPricesHandler = async (req, res) => {
   try {
     const connection = await getConnection();
-    const prices = await connection.query('SELECT id, name FROM prices')
+    const prices = await connection.query('SELECT id, name, offer_id FROM prices')
     res.json(prices)
   } catch (error) {
     return res.status(500).json({ error: error.message });
@@ -16,6 +16,24 @@ const getPriceHandler = async (req, res) => {
     const connection = await getConnection();
     const price = await connection.query('SELECT id, name, description, price_value, offer_id FROM prices WHERE id = ?', 
     id)
+    console.log('pro', price)
+    res.json(price)
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+}
+//CAMBIAR PRICES
+const getPriceByOfferIdHandler = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log('id', id)
+    const connection = await getConnection();
+    const price = await connection.query(`
+    SELECT id, name, description, price_value, offer_id FROM prices WHERE offer_id = ?`, id);
+    console.log('passsaaaa')
+    if(price.length === 0){
+      res.json({ response: 'ho hay prices' })
+    }
     console.log('pro', price)
     res.json(price)
   } catch (error) {
@@ -40,24 +58,6 @@ const createPriceHandler = async (req, res) => {
   }
 }
 
-// const updatePriceHandler = async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const { name, description, price_value, offer_id } = req.body;
-
-//   if(name!=undefined || price_value!=undefined || offer_id!=undefined || description!=undefined  ){
-//       return res.status(422).json({ response: 'Missing values in the body' });
-//     }
-
-//     const price = { name, description, price_value, offer_id }
-//     const connection = await getConnection();
-//     const updatePrice = await connection.query('UPDATE prices SET ? WHERE id = ?', [price, id])
-//     res.json(updatePrice)
-//   } catch (error) {
-//     return res.status(500).json({ error: error.message });
-//   }
-// }
-
 const deletePriceHandler = async (req, res) => {
   try {
     const { id } = req.params;
@@ -74,5 +74,6 @@ module.exports = {
   createPriceHandler,
   getPriceHandler,
   deletePriceHandler,
+  getPriceByOfferIdHandler
 };
   
